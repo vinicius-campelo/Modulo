@@ -1,0 +1,101 @@
+﻿<div ng-app="myApp" ng-controller="MyController" class="my-controller">
+    <!--Angular ini-->
+    <div class="container py-4">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h2>LISTA DE ATIVIDADES</h2>
+            </div>
+            <div class="card-body">
+
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <button type="submit" class="btn btn-outline-danger" id="deletaLinha"><i class="far fa-calendar-times"></i> Remover da Lista</button>
+                        <a href="~/Home/AddEdit" class="btn btn-outline-primary"><i class="fas fa-file-alt"></i> Cadastrar Atividade</a>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <input ng-model="nNome" name="nNome" id="nNome" class="form-control" placeholder="Procurar na lista..." maxlength="100">
+                    </div>
+                </div>
+
+                <br />
+
+                <table id="table" class="table table-hover table-striped table-responsive-sm p3">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" ng-model='checkall' /></th>
+                            <th>Atividade</th>
+                            <th id="table-thead-text" colspan="4">Descrição</th>
+                            <th>Data</th>
+                            <th>Prioridade</th>
+                            <th>Concluida</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr dir-paginate="meal in meals | filter:nNome | itemsPerPage: pageSize" current-page="currentPage" id="ativ-{{ meal.Id }}" ng-style="{'background-color' : meal.Status === 'fas fa-lock-open' ? '#FBEFFB':'#F5FBEF'}">
+                            <td><input type='checkbox' name="atividade" value="{{ meal.Id }}" ng-checked="checkall" onclick="validate()" class="custom-checkbox chkCheckBoxId"></td>
+                            <td>{{ meal.Tarefa }}</td>
+                            <td id="table-collor-text" colspan="4">{{ meal.Descricao }}</td>
+                            <td>{{ meal.Data | date }}</td>
+                            <td>{{ meal.Prioridade }}</td>
+                            <td><span id="image-open-close"><i class="{{meal.Status}}"></i></span></td>
+                            <td><a href="~/Home/AddEdit/{{ meal.Id }}" class="btn btn-outline-secondary btn-sm"><i class="far fa-edit"></i> Editar</a></td>
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+                <div ng-controller="OtherController" class="other-controller">
+                    <div class="text-center">
+                        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)"></dir-pagination-controls>
+                    </div>
+                </div>
+                <link href="~/Content/bootstrap-3.1.1.min.css" rel="stylesheet" />
+
+            </div>
+        </div>
+
+
+        <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <div class="modal" id="mdelet" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Atenção!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p><span id="excluiArquivo"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btnFechaModal" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                        <button type="button" id="btnComfirmaModal" class="btn btn-primary" ng-click="deletEvent()">Remover</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<!--Paginação da tabela-->
+<script data-require="angular.js@1.3.0" data-semver="1.3.0" src="~/Scripts/angular-1.3.0.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+<script src="~/Scripts/dirPagination.js"></script>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/script/view.js"></script>
+
+
+
+
+

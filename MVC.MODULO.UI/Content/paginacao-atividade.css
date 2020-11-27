@@ -1,0 +1,60 @@
+﻿.my-controller {
+    border: 1px solid #fcc;
+    padding: 5px;
+    margin: 3px;
+}
+
+    .my-controller small {
+        color: #c99;
+    }
+
+.other-controller {
+    border: 1px solid #ccf;
+    padding: 5px;
+    margin: 3px;
+}
+
+    .other-controller small {
+        color: #99c;
+    }
+
+.third-controller {
+    border: 1px solid #cfc;
+    padding: 5px;
+    margin: 3px;
+}
+
+    .third-controller small {
+        color: #9c9;
+    }
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.ppa {
+    padding: 11px;
+}
+
+.ppe {
+    padding: 10px;
+}
+
+
+
+
+
+/*ordenacao da tabela*/
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:before {
+    bottom: .5em;
+}

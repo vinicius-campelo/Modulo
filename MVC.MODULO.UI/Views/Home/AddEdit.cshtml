@@ -1,0 +1,100 @@
+﻿
+
+<link href="~/Content/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery-ui-1.12.1.js"></script>
+<script src="~/Scripts/jquery-ui.js"></script>
+<script src="~/Scripts/script/atividade.js"></script>
+<script src="~/Scripts/jquery.globalize/cultures/globalize.culture.pt-BR.js"></script>
+
+<div ng-app="">
+    <div class="container py-4">
+        <div class="card">
+
+            <div class="card-header bg-primary text-white">
+
+                <h2 id="idtexto"></h2>
+
+            </div>
+            <div class="invalid-feedback">
+                <p>@Html.ValidationSummary()</p> 
+            </div>
+                <div class="card-body">
+                    <form method="post" class="needs-validation" novalidate>
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom01">Sua Atividade</label>
+                                @Html.TextBox("Tarefa", null, new { @class = "form-control", id = "Tarefa", @placeholder = "Tema da atividade", @required = "required" })
+                                <div class="invalid-feedback">
+                                    Campo tarefa obrigatorio!
+                                </div>
+                                @Html.ValidationMessage("Tarefa", null, new { @class = "text-danger", @style = "font-size: 13px;" })
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom02">Escolha a Prioridade desta Tarefa</label>
+                                @Html.DropDownList("Prioridade", null, new { @class = "custom-select mr-sm-4", @required = "required" })
+                                <div class="invalid-feedback">
+                                    Campo prioridade deve ser selecionado!
+                                </div>
+
+                                @Html.ValidationMessage("Prioridade", null, new { @class = "text-danger", @style = "font-size: 13px;" })
+                            </div>
+                        </div>
+
+
+
+
+
+
+                        <div class="form-row">
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom03">Data da Tarefa</label>
+                                @Html.TextBox("Data", null, new { @class = "form-control", @type = "text", @id = "DateOfBirth", @required = "required" })
+                                <div class="invalid-feedback">
+                                    O campo data deve ser preenchdo!
+                                </div>
+                                @Html.ValidationMessage("Data", null, new { @class = "text-danger", @style = "font-size: 13px;" })
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="validationCustom02">Descreva Sua Tarefa</label>
+                                @Html.TextArea("Descricao", null, new { @class = "form-control", id = "Descricao", @cols = "55", @rows = "3", @placeholder = "Descrição da atividade", @required = "required" })
+                                <div class="invalid-feedback">
+                                    O campo descrição deve ser preenchdo!
+                                </div>
+                                @Html.ValidationMessage("Descricao", null, new { @class = "text-danger", @style = "font-size: 13px;" })
+                            </div>
+
+
+
+                            <div class="form-group col-md-12">
+                                <div class="form-group row">
+                                    <div class="col-sm-10">
+                                        <div id="checkStatus" class="form-check">
+                                            @Html.CheckBox("Status", new { @class = "form-check-input", id = "checkStatus" })
+                                            <label class="form-check-label" for="gridCheck1" id="checkStatus">
+                                                Marcar Atividade Como Concluida
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <button type="submit" class="btn btn-outline-success"><i class="far fa-save"></i> Salvar</button>
+                        <a href="~/Home" class="btn btn-outline-primary"><i class="far fa-window-close"></i> Cancelar</a>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+</div>
+
+
+
+
